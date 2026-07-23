@@ -1,0 +1,9 @@
+node_modules/
+output/
+*.pdf
+*.pptx
+package-lock.json
+.claude/
+generate.js
+render-preview.js
+contact-sheet.js

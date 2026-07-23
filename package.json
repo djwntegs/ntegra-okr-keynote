@@ -1,0 +1,14 @@
+{
+  "name": "ntegra-okr-keynote",
+  "version": "1.0.0",
+  "description": "Ntegra Product Engineering OKRs keynote presentation",
+  "scripts": {
+    "render": "node scripts/render.js",
+    "pdf": "node scripts/pdf.js",
+    "contact-sheet": "node scripts/contact-sheet.js",
+    "build": "npm run render && npm run contact-sheet && npm run pdf"
+  },
+  "dependencies": {
+    "playwright": "^1.61.1"
+  }
+}
