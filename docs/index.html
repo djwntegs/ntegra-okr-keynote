@@ -6,21 +6,31 @@
 <style>
 /* ─── Reset ─────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html, body { width: 1920px; background: #0F172A; font-family: Inter, Aptos, 'Segoe UI', Arial, sans-serif; }
+html, body { width: 100%; overflow-x: hidden; background: #0F172A; font-family: Inter, Aptos, 'Segoe UI', Arial, sans-serif; }
 
-/* ─── Each slide: full 1920×1080 ─────────────────────── */
+/* ─── Slide wrapper — scales slide to viewport width ── */
+.slide-wrapper {
+  width: 100%;
+  /* height set by JS to match scaled height */
+  overflow: hidden;
+}
+
+/* ─── Each slide: always 1920×1080, scaled down via JS ── */
 .slide {
   width: 1920px; height: 1080px;
   overflow: hidden; position: relative;
   display: flex; flex-direction: column;
   flex-shrink: 0;
+  transform-origin: top left;
 }
 
 /* ─── Print layout ──────────────────────────────────── */
 @media print {
   @page { size: 13.333in 7.5in; margin: 0; }
-  html, body { width: 1920px; }
+  html, body { width: 1920px; overflow-x: visible; }
+  .slide-wrapper { width: 1920px; height: 1080px; }
   .slide {
+    transform: none !important;
     page-break-after: always;
     break-after: page;
     -webkit-print-color-adjust: exact;
@@ -119,7 +129,7 @@ html, body { width: 1920px; background: #0F172A; font-family: Inter, Aptos, 'Seg
 
   <div style="padding:32px 96px;display:flex;justify-content:space-between;align-items:center">
     <div style="font-size:22px;color:#334155">Ntegra · Product Engineering</div>
-    <div style="background:#2563EB;color:#fff;font-size:22px;font-weight:700;padding:14px 40px;border-radius:10px">2025</div>
+    <div style="background:#2563EB;color:#fff;font-size:22px;font-weight:700;padding:14px 40px;border-radius:10px">2026</div>
   </div>
 </div>
 
@@ -621,5 +631,29 @@ html, body { width: 1920px; background: #0F172A; font-family: Inter, Aptos, 'Seg
   <div style="text-align:right;font-size:20px;color:#334155">Ntegra · Product Engineering</div>
 </div>
 
+<script>
+function scaleSlides() {
+  const scale = window.innerWidth / 1920;
+  document.querySelectorAll('.slide').forEach(slide => {
+    slide.style.transform = `scale(${scale})`;
+    // Wrap in a container that collapses to the scaled height
+    const wrapper = slide.parentElement;
+    if (wrapper && wrapper.classList.contains('slide-wrapper')) {
+      wrapper.style.height = (1080 * scale) + 'px';
+    }
+  });
+}
+
+// Wrap each slide in a .slide-wrapper on load
+document.querySelectorAll('.slide').forEach(slide => {
+  const wrapper = document.createElement('div');
+  wrapper.className = 'slide-wrapper';
+  slide.parentNode.insertBefore(wrapper, slide);
+  wrapper.appendChild(slide);
+});
+
+scaleSlides();
+window.addEventListener('resize', scaleSlides);
+</script>
 </body>
 </html>
