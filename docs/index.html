@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<title>Product Engineering OKRs — Ntegra</title>
+<style>
+/* ─── Reset ─────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 1920px; background: #0F172A; font-family: Inter, Aptos, 'Segoe UI', Arial, sans-serif; }
+
+/* ─── Each slide: full 1920×1080 ─────────────────────── */
+.slide {
+  width: 1920px; height: 1080px;
+  overflow: hidden; position: relative;
+  display: flex; flex-direction: column;
+  flex-shrink: 0;
+}
+
+/* ─── Print layout ──────────────────────────────────── */
+@media print {
+  @page { size: 13.333in 7.5in; margin: 0; }
+  html, body { width: 1920px; }
+  .slide {
+    page-break-after: always;
+    break-after: page;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}
+
+/* ─── Backgrounds ──────────────────────────────────── */
+.bg-navy  { background: #0F172A; }
+.bg-dark  { background: #111827; }
+.bg-light { background: #F8FAFC; color: #1E293B; }
+
+/* ─── Grid overlay ──────────────────────────────────── */
+.grid-bg::before {
+  content: '';
+  position: absolute; inset: 0; pointer-events: none; z-index: 0;
+  background-image:
+    repeating-linear-gradient(0deg,   transparent, transparent 134px, rgba(30,41,59,0.8) 134px, rgba(30,41,59,0.8) 135px),
+    repeating-linear-gradient(90deg,  transparent, transparent 192px, rgba(30,41,59,0.8) 192px, rgba(30,41,59,0.8) 193px);
+}
+.slide > * { position: relative; z-index: 1; }
+
+/* ─── Glow blobs ────────────────────────────────────── */
+.glow {
+  position: absolute; border-radius: 50%;
+  filter: blur(120px); pointer-events: none; z-index: 0;
+}
+
+/* ─── Standard padding ───────────────────────────────── */
+.pad { padding: 72px 96px; }
+
+/* ─── Flex helpers ────────────────────────────────────── */
+.col  { display: flex; flex-direction: column; }
+.row  { display: flex; flex-direction: row; }
+.grow { flex: 1; }
+.gap24  { gap: 24px; }
+.gap32  { gap: 32px; }
+.gap40  { gap: 40px; }
+.gap48  { gap: 48px; }
+
+/* ─── Cards ──────────────────────────────────────────── */
+.card {
+  border-radius: 20px;
+  padding: 52px 48px;
+  flex: 1; position: relative; overflow: hidden;
+}
+.card-navy  { background: #0D1B2E; border: 2px solid #2563EB; }
+.card-slate { background: #1E293B; border: 2px solid #334155; }
+.card-amber { background: #1A140A; border: 2px solid #F59E0B; }
+.card-green { background: #0A1A0E; border: 2px solid #16A34A; }
+
+.card-top-blue   { border-top: 10px solid #2563EB; }
+.card-top-amber  { border-top: 10px solid #F59E0B; }
+.card-top-green  { border-top: 10px solid #16A34A; }
+.card-top-slate  { border-top: 10px solid #64748B; }
+
+/* ─── Typography ─────────────────────────────────────── */
+.label   { font-size: 24px; font-weight: 700; color: #2563EB; letter-spacing: 2px; text-transform: uppercase; }
+.hero    { font-size: 90px; font-weight: 800; color: #FFFFFF; line-height: 1.05; }
+.t64     { font-size: 64px; font-weight: 700; color: #FFFFFF; line-height: 1.1; }
+.t52     { font-size: 52px; font-weight: 700; color: #FFFFFF; line-height: 1.15; }
+.t44     { font-size: 44px; font-weight: 700; color: #FFFFFF; line-height: 1.15; }
+.t36     { font-size: 36px; font-weight: 700; color: #FFFFFF; line-height: 1.2; }
+.t28     { font-size: 28px; font-weight: 700; color: #FFFFFF; line-height: 1.3; }
+.t24     { font-size: 24px; color: #94A3B8; line-height: 1.55; }
+.t20     { font-size: 20px; color: #94A3B8; line-height: 1.55; }
+
+.white   { color: #FFFFFF !important; }
+.blue    { color: #2563EB; }
+.green   { color: #16A34A; }
+.amber   { color: #F59E0B; }
+.slate   { color: #64748B; }
+.slate2  { color: #94A3B8; }
+.dark-text { color: #1E293B; }
+
+/* ─── Progress bars ──────────────────────────────────── */
+.bar-track { background: #334155; border-radius: 8px; height: 22px; width: 100%; }
+.bar-fill  { height: 22px; border-radius: 8px; }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════ SLIDE 1 — Cover ══════════════════════ -->
+<div class="slide bg-navy grid-bg" id="s1">
+  <div class="glow" style="width:900px;height:900px;top:-300px;right:-150px;background:rgba(37,99,235,0.2)"></div>
+  <div class="glow" style="width:500px;height:500px;bottom:-100px;left:-100px;background:rgba(100,116,139,0.15)"></div>
+
+  <div style="display:flex;align-items:center;flex:1;padding:0 96px">
+    <div style="width:10px;height:360px;background:#2563EB;border-radius:5px;margin-right:64px;flex-shrink:0"></div>
+    <div>
+      <div class="label" style="margin-bottom:32px">Ntegra · Product Engineering</div>
+      <div class="hero">Product Engineering OKRs</div>
+      <div style="font-size:38px;color:#64748B;margin-top:28px">Turning our mission into measurable outcomes</div>
+    </div>
+  </div>
+
+  <div style="padding:32px 96px;display:flex;justify-content:space-between;align-items:center">
+    <div style="font-size:22px;color:#334155">Ntegra · Product Engineering</div>
+    <div style="background:#2563EB;color:#fff;font-size:22px;font-weight:700;padding:14px 40px;border-radius:10px">2025</div>
+  </div>
+</div>
+
+<!-- ══════════════════════ SLIDE 2 — Real Reason ══════════════════════ -->
+<div class="slide bg-navy col" style="justify-content:center;padding:0 140px" id="s2">
+  <div style="font-size:54px;color:#64748B;margin-bottom:40px;font-weight:400">We are not introducing OKRs.</div>
+  <div style="font-size:82px;font-weight:800;color:#FFFFFF;line-height:1.1">We are changing how we<br>think about success.</div>
+  <div style="width:32px;height:32px;background:#2563EB;border-radius:50%;margin-top:96px"></div>
+</div>
+
+<!-- ══════════════════════ SLIDE 3 — Why Change ══════════════════════ -->
+<div class="slide bg-navy col pad" id="s3">
+  <div class="label" style="margin-bottom:16px">Three honest observations</div>
+  <div class="t52" style="margin-bottom:40px">Where we have opportunities to grow</div>
+
+  <div class="row grow gap32">
+
+    <div class="card card-slate card-top-blue" style="display:flex;flex-direction:column">
+      <div style="font-size:80px;font-weight:800;color:#2563EB;line-height:1;margin-bottom:28px">01</div>
+      <div style="font-size:34px;font-weight:700;color:#FFFFFF;margin-bottom:24px;line-height:1.25">Career growth is not always visible.</div>
+      <div style="font-size:24px;color:#94A3B8;line-height:1.55;flex:1">Engineers do exceptional work that isn't always connected to their progression. We can change that.</div>
+    </div>
+
+    <div class="card card-slate card-top-amber" style="display:flex;flex-direction:column">
+      <div style="font-size:80px;font-weight:800;color:#F59E0B;line-height:1;margin-bottom:28px">02</div>
+      <div style="font-size:34px;font-weight:700;color:#FFFFFF;margin-bottom:24px;line-height:1.25">Ownership can vary across teams.</div>
+      <div style="font-size:24px;color:#94A3B8;line-height:1.55;flex:1">Some teams have deep autonomy. Others are closer to delivery pipelines. We want everyone to lead.</div>
+    </div>
+
+    <div class="card card-slate card-top-green" style="display:flex;flex-direction:column">
+      <div style="font-size:80px;font-weight:800;color:#16A34A;line-height:1;margin-bottom:28px">03</div>
+      <div style="font-size:34px;font-weight:700;color:#FFFFFF;margin-bottom:24px;line-height:1.25">Too much energy on routine work.</div>
+      <div style="font-size:24px;color:#94A3B8;line-height:1.55;flex:1">Our best talent deserves to spend more time on the hardest, most interesting problems.</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════ SLIDE 4 — The Future ══════════════════════ -->
+<div class="slide bg-navy col pad" id="s4">
+  <div class="glow" style="width:800px;height:800px;top:100px;left:50%;transform:translateX(-50%);background:rgba(37,99,235,0.12)"></div>
+  <div class="t52" style="margin-bottom:40px">Imagine Product Engineering one year from now.</div>
+
+  <div class="row grow gap32">
+
+    <div class="card card-navy card-top-blue" style="display:flex;flex-direction:column">
+      <div style="font-size:44px;font-weight:800;color:#2563EB;margin-bottom:28px">→</div>
+      <div style="font-size:32px;font-weight:700;color:#FFFFFF;margin-bottom:24px;line-height:1.3">Everyone understands how they can grow.</div>
+      <div style="font-size:22px;color:#94A3B8;line-height:1.55;flex:1">Clear pathways. Visible progress. Personal development plans in place for every engineer.</div>
+    </div>
+
+    <div class="card card-amber card-top-amber" style="display:flex;flex-direction:column">
+      <div style="font-size:44px;font-weight:800;color:#F59E0B;margin-bottom:28px">→</div>
+      <div style="font-size:32px;font-weight:700;color:#FFFFFF;margin-bottom:24px;line-height:1.3">Engineers own outcomes, not only outputs.</div>
+      <div style="font-size:22px;color:#94A3B8;line-height:1.55;flex:1">Teams make decisions, take responsibility for results, and learn from what happens.</div>
+    </div>
+
+    <div class="card card-green card-top-green" style="display:flex;flex-direction:column">
+      <div style="font-size:44px;font-weight:800;color:#16A34A;margin-bottom:28px">→</div>
+      <div style="font-size:32px;font-weight:700;color:#FFFFFF;margin-bottom:24px;line-height:1.3">Innovation receives more of our talent.</div>
+      <div style="font-size:22px;color:#94A3B8;line-height:1.55;flex:1">Less time on maintenance and routine tasks. More time on the work that defines us.</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════ SLIDE 5 — Mission ══════════════════════ -->
+<div class="slide bg-light" style="display:flex;flex-direction:row" id="s5">
+  <div style="flex:1;background:#F8FAFC;display:flex;flex-direction:column;justify-content:center;padding:96px 80px 96px 96px;border-right:3px solid #E2E8F0">
+    <div style="font-size:22px;font-weight:700;color:#2563EB;letter-spacing:2px;text-transform:uppercase;margin-bottom:32px">Our Mission</div>
+    <div style="font-size:96px;font-weight:800;color:#2563EB;line-height:1.05;margin-bottom:40px">Join,<br>grow<br>and stay.</div>
+    <div style="width:120px;height:7px;background:#2563EB;border-radius:4px"></div>
+  </div>
+  <div style="flex:1.4;display:flex;flex-direction:column;justify-content:center;padding:96px 96px 96px 80px">
+    <div style="font-size:36px;color:#1E293B;line-height:1.7;margin-bottom:60px">
+      Make Product Engineering a destination for exceptional people to <strong>join, grow and stay</strong> — by creating clear career pathways, empowering meaningful ownership and focusing talent on innovation and high-value work.
+    </div>
+    <div style="display:flex;gap:24px">
+      <div style="flex:1;background:#EFF6FF;border-left:4px solid #2563EB;padding:20px 24px;border-radius:0 8px 8px 0">
+        <div style="font-size:18px;font-weight:700;color:#2563EB;margin-bottom:6px">Career Pathways</div>
+        <div style="font-size:16px;color:#64748B">Clear progression for every engineer</div>
+      </div>
+      <div style="flex:1;background:#FFFBEB;border-left:4px solid #F59E0B;padding:20px 24px;border-radius:0 8px 8px 0">
+        <div style="font-size:18px;font-weight:700;color:#D97706;margin-bottom:6px">Meaningful Ownership</div>
+        <div style="font-size:16px;color:#64748B">Outcomes, not just outputs</div>
+      </div>
+      <div style="flex:1;background:#F0FDF4;border-left:4px solid #16A34A;padding:20px 24px;border-radius:0 8px 8px 0">
+        <div style="font-size:18px;font-weight:700;color:#16A34A;margin-bottom:6px">Innovation Focus</div>
+        <div style="font-size:16px;color:#64748B">High-value work for our best talent</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════ SLIDE 6 — Three Pillars ══════════════════════ -->
+<div class="slide bg-navy col pad" id="s6">
+  <div class="label" style="margin-bottom:16px">Three strategic pillars</div>
+  <div class="t44" style="margin-bottom:40px">Everything we do should strengthen one of these.</div>
+
+  <div class="row grow gap32">
+
+    <div class="card" style="background:#0D1B2E;border:2px solid #2563EB;border-top:10px solid #2563EB;display:flex;flex-direction:column">
+      <div style="font-size:96px;font-weight:800;color:#2563EB;line-height:1;margin-bottom:20px">1</div>
+      <div style="font-size:36px;font-weight:700;color:#FFFFFF;margin-bottom:24px;line-height:1.25">Clear Career Pathways</div>
+      <div style="font-size:24px;color:#94A3B8;line-height:1.55;flex:1">Every engineer knows where they are, where they can go, and what it takes to get there. No ambiguity about progression.</div>
+    </div>
+
+    <div class="card" style="background:#1A140A;border:2px solid #F59E0B;border-top:10px solid #F59E0B;display:flex;flex-direction:column">
+      <div style="font-size:96px;font-weight:800;color:#F59E0B;line-height:1;margin-bottom:20px">2</div>
+      <div style="font-size:36px;font-weight:700;color:#FFFFFF;margin-bottom:24px;line-height:1.25">Meaningful Ownership</div>
+      <div style="font-size:24px;color:#94A3B8;line-height:1.55;flex:1">Engineers and teams own outcomes end-to-end. They make decisions, take risks, and are accountable for results.</div>
+    </div>
+
+    <div class="card" style="background:#0A1A0E;border:2px solid #16A34A;border-top:10px solid #16A34A;display:flex;flex-direction:column">
+      <div style="font-size:96px;font-weight:800;color:#16A34A;line-height:1;margin-bottom:20px">3</div>
+      <div style="font-size:36px;font-weight:700;color:#FFFFFF;margin-bottom:24px;line-height:1.25">Innovation and High-Value Work</div>
+      <div style="font-size:24px;color:#94A3B8;line-height:1.55;flex:1">Our talent is our scarcest resource. We focus it on the work that creates the most value and advances our craft.</div>
+    </div>
+
+  </div>
+
+  <div style="text-align:center;font-size:22px;color:#64748B;font-style:italic;margin-top:32px">
+    Everything we prioritise should strengthen at least one of these pillars.
+  </div>
+</div>
+
+<!-- ══════════════════════ SLIDE 7 — Why OKRs ══════════════════════ -->
+<div class="slide bg-navy col pad" id="s7">
+  <div class="label" style="margin-bottom:16px">Why OKRs?</div>
+  <div class="t44" style="margin-bottom:44px">From project thinking to outcome thinking</div>
+
+  <div class="row grow" style="gap:0">
+
+    <div style="flex:1;background:#1E293B;border-radius:20px 0 0 20px;padding:48px 64px;display:flex;flex-direction:column;align-items:center">
+      <div style="font-size:22px;font-weight:700;color:#64748B;letter-spacing:3px;margin-bottom:40px">OLD WAY</div>
+      <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;width:100%">
+        <div style="background:#334155;border-radius:12px;padding:22px 0;width:100%;text-align:center;font-size:32px;font-weight:700;color:#94A3B8">Projects</div>
+        <div style="font-size:32px;color:#64748B;padding:10px 0;text-align:center;width:100%">↓</div>
+        <div style="background:#334155;border-radius:12px;padding:22px 0;width:100%;text-align:center;font-size:32px;font-weight:700;color:#94A3B8">Delivery</div>
+        <div style="font-size:32px;color:#64748B;padding:10px 0;text-align:center;width:100%">↓</div>
+        <div style="background:#334155;border-radius:12px;padding:22px 0;width:100%;text-align:center;font-size:32px;font-weight:700;color:#94A3B8">Done</div>
+      </div>
+    </div>
+
+    <div style="display:flex;align-items:center;justify-content:center;padding:0 48px;font-size:72px;font-weight:800;color:#2563EB">→</div>
+
+    <div style="flex:1;background:#0D1B2E;border:2px solid #2563EB;border-radius:0 20px 20px 0;padding:48px 64px;display:flex;flex-direction:column;align-items:center">
+      <div style="font-size:22px;font-weight:700;color:#2563EB;letter-spacing:3px;margin-bottom:40px">NEW WAY</div>
+      <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;width:100%">
+        <div style="border:2px solid #64748B;border-radius:12px;padding:20px 0;width:100%;text-align:center;font-size:30px;font-weight:700;color:#94A3B8">Mission</div>
+        <div style="font-size:28px;color:#64748B;padding:8px 0;text-align:center;width:100%">↓</div>
+        <div style="border:2px solid #2563EB;border-radius:12px;padding:20px 0;width:100%;text-align:center;font-size:30px;font-weight:700;color:#2563EB">Objectives</div>
+        <div style="font-size:28px;color:#64748B;padding:8px 0;text-align:center;width:100%">↓</div>
+        <div style="border:2px solid #16A34A;border-radius:12px;padding:20px 0;width:100%;text-align:center;font-size:30px;font-weight:700;color:#16A34A">Key Results</div>
+        <div style="font-size:28px;color:#64748B;padding:8px 0;text-align:center;width:100%">↓</div>
+        <div style="border:2px solid #F59E0B;border-radius:12px;padding:20px 0;width:100%;text-align:center;font-size:30px;font-weight:700;color:#F59E0B">Learning</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════ SLIDE 8 — Strategy Cascade ══════════════════════ -->
+<div class="slide bg-navy col pad" id="s8">
+  <div class="label" style="margin-bottom:16px">The strategy cascade</div>
+  <div class="t44" style="margin-bottom:44px">How purpose becomes action</div>
+
+  <div class="row grow" style="gap:6px;align-items:stretch">
+
+    <div style="flex:1;background:#1E293B;border-radius:20px;padding:48px 36px;border-top:10px solid #64748B;display:flex;flex-direction:column">
+      <div style="font-size:36px;font-weight:800;color:#94A3B8;margin-bottom:16px">Mission</div>
+      <div style="font-size:20px;color:#64748B;font-style:italic;margin-bottom:24px">Why we exist</div>
+      <div style="width:100%;height:1px;background:#334155;margin-bottom:24px"></div>
+      <div style="font-size:22px;color:#64748B;line-height:1.6;flex:1">The reason Product Engineering exists. Our permanent north star.</div>
+    </div>
+
+    <div style="display:flex;align-items:center;font-size:40px;color:#334155;padding:0 12px;flex-shrink:0">→</div>
+
+    <div style="flex:1;background:#0D1B2E;border-radius:20px;padding:48px 36px;border-top:10px solid #2563EB;display:flex;flex-direction:column">
+      <div style="font-size:36px;font-weight:800;color:#2563EB;margin-bottom:16px">Objectives</div>
+      <div style="font-size:20px;color:#64748B;font-style:italic;margin-bottom:24px">Where we are going</div>
+      <div style="width:100%;height:1px;background:#1E293B;margin-bottom:24px"></div>
+      <div style="font-size:22px;color:#64748B;line-height:1.6;flex:1">The meaningful changes we want to achieve this quarter.</div>
+    </div>
+
+    <div style="display:flex;align-items:center;font-size:40px;color:#334155;padding:0 12px;flex-shrink:0">→</div>
+
+    <div style="flex:1;background:#0A1A0E;border-radius:20px;padding:48px 36px;border-top:10px solid #16A34A;display:flex;flex-direction:column">
+      <div style="font-size:36px;font-weight:800;color:#16A34A;margin-bottom:16px">Key Results</div>
+      <div style="font-size:20px;color:#64748B;font-style:italic;margin-bottom:24px">How success is measured</div>
+      <div style="width:100%;height:1px;background:#0A2010;margin-bottom:24px"></div>
+      <div style="font-size:22px;color:#64748B;line-height:1.6;flex:1">The numbers that tell us we have achieved the objective.</div>
+    </div>
+
+    <div style="display:flex;align-items:center;font-size:40px;color:#334155;padding:0 12px;flex-shrink:0">→</div>
+
+    <div style="flex:1;background:#1A140A;border-radius:20px;padding:48px 36px;border-top:10px solid #F59E0B;display:flex;flex-direction:column">
+      <div style="font-size:36px;font-weight:800;color:#F59E0B;margin-bottom:16px">Initiatives</div>
+      <div style="font-size:20px;color:#64748B;font-style:italic;margin-bottom:24px">The work we choose</div>
+      <div style="width:100%;height:1px;background:#1A1000;margin-bottom:24px"></div>
+      <div style="font-size:22px;color:#64748B;line-height:1.6;flex:1">The specific projects and actions we run to move the metrics.</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════ SLIDE 9 — Anatomy ══════════════════════ -->
+<div class="slide bg-navy col pad" id="s9">
+  <div class="label" style="margin-bottom:28px">Anatomy of an OKR</div>
+
+  <div style="background:#0D1B2E;border:2px solid #2563EB;border-radius:16px;padding:36px 52px;margin-bottom:36px">
+    <div style="font-size:20px;font-weight:800;color:#2563EB;letter-spacing:2px;margin-bottom:14px">OBJECTIVE</div>
+    <div style="font-size:38px;font-weight:700;color:#FFFFFF;line-height:1.25">Create clear career pathways across Product Engineering.</div>
+  </div>
+
+  <div style="font-size:20px;font-weight:800;color:#16A34A;letter-spacing:2px;margin-bottom:16px">KEY RESULTS</div>
+
+  <div style="background:#0A1A0E;border:1.5px solid #16A34A;border-radius:12px;padding:22px 36px;margin-bottom:14px;display:flex;align-items:center;gap:32px">
+    <div style="font-size:22px;font-weight:800;color:#16A34A;min-width:56px">KR1</div>
+    <div style="font-size:26px;color:#FFFFFF">Publish a career framework covering all Product Engineering roles.</div>
+  </div>
+  <div style="background:#0A1A0E;border:1.5px solid #16A34A;border-radius:12px;padding:22px 36px;margin-bottom:14px;display:flex;align-items:center;gap:32px">
+    <div style="font-size:22px;font-weight:800;color:#16A34A;min-width:56px">KR2</div>
+    <div style="font-size:26px;color:#FFFFFF">75% of colleagues have a documented development plan by end of quarter.</div>
+  </div>
+  <div style="background:#0A1A0E;border:1.5px solid #16A34A;border-radius:12px;padding:22px 36px;margin-bottom:36px;display:flex;align-items:center;gap:32px">
+    <div style="font-size:22px;font-weight:800;color:#16A34A;min-width:56px">KR3</div>
+    <div style="font-size:26px;color:#FFFFFF">90% of colleagues report they understand their progression opportunities.</div>
+  </div>
+
+  <div style="font-size:20px;font-weight:800;color:#F59E0B;letter-spacing:2px;margin-bottom:18px">INITIATIVES</div>
+  <div style="display:flex;gap:20px">
+    <div style="background:#1A140A;border:1.5px solid #F59E0B;border-radius:10px;padding:18px 32px;font-size:22px;color:#F59E0B">Career framework design</div>
+    <div style="background:#1A140A;border:1.5px solid #F59E0B;border-radius:10px;padding:18px 32px;font-size:22px;color:#F59E0B">Mentoring programme</div>
+    <div style="background:#1A140A;border:1.5px solid #F59E0B;border-radius:10px;padding:18px 32px;font-size:22px;color:#F59E0B">Manager coaching</div>
+    <div style="background:#1A140A;border:1.5px solid #F59E0B;border-radius:10px;padding:18px 32px;font-size:22px;color:#F59E0B">Career workshops</div>
+  </div>
+</div>
+
+<!-- ══════════════════════ SLIDE 10 — Common Mistake ══════════════════════ -->
+<div class="slide bg-navy col pad" id="s10">
+  <div class="label" style="margin-bottom:16px">The most common mistake</div>
+  <div class="t52" style="margin-bottom:44px">Do not measure effort. Measure change.</div>
+
+  <div class="row grow gap40">
+
+    <div style="flex:1;background:#1A140A;border:2px solid #F59E0B;border-top:10px solid #F59E0B;border-radius:20px;padding:52px 48px;display:flex;flex-direction:column">
+      <div style="font-size:24px;font-weight:800;color:#F59E0B;letter-spacing:1px;margin-bottom:36px">ACTIVITIES — not OKRs</div>
+      <div style="font-size:28px;color:#94A3B8;line-height:1.9">
+        · Launch a mentoring programme<br>
+        · Run career workshops<br>
+        · Improve onboarding documentation<br>
+        · Hold quarterly reviews
+      </div>
+    </div>
+
+    <div style="flex:1;background:#0A1A0E;border:2px solid #16A34A;border-top:10px solid #16A34A;border-radius:20px;padding:52px 48px;display:flex;flex-direction:column">
+      <div style="font-size:24px;font-weight:800;color:#16A34A;letter-spacing:1px;margin-bottom:36px">OUTCOMES — these are OKRs</div>
+      <div style="font-size:28px;color:#FFFFFF;line-height:1.9">
+        ✓ 80% of colleagues have an active mentor<br>
+        ✓ 90% understand their career options<br>
+        ✓ Median onboarding falls from 8 to 5 weeks<br>
+        ✓ 85% report feeling supported in their growth
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════ SLIDE 11 — First Objectives ══════════════════════ -->
+<div class="slide bg-navy col pad" id="s11">
+  <div class="label" style="margin-bottom:16px">Our first objectives</div>
+  <div class="t44" style="margin-bottom:40px">Three objectives. One shared mission.</div>
+
+  <div class="row grow gap32">
+
+    <div class="card" style="background:#0D1B2E;border:2px solid #2563EB;border-top:10px solid #2563EB;display:flex;flex-direction:column">
+      <div style="font-size:20px;font-weight:800;color:#2563EB;letter-spacing:1px;margin-bottom:10px">OBJ 1 · Clear Career Pathways</div>
+      <div style="width:100%;height:1px;background:#1E3A5F;margin-bottom:28px"></div>
+      <div style="font-size:30px;font-weight:700;color:#FFFFFF;line-height:1.45;flex:1">Create clear career pathways and accelerate the development of every engineer in Product Engineering.</div>
+    </div>
+
+    <div class="card" style="background:#1A140A;border:2px solid #F59E0B;border-top:10px solid #F59E0B;display:flex;flex-direction:column">
+      <div style="font-size:20px;font-weight:800;color:#F59E0B;letter-spacing:1px;margin-bottom:10px">OBJ 2 · Meaningful Ownership</div>
+      <div style="width:100%;height:1px;background:#3A2A0A;margin-bottom:28px"></div>
+      <div style="font-size:30px;font-weight:700;color:#FFFFFF;line-height:1.45;flex:1">Increase meaningful ownership and leadership opportunities so engineers own outcomes end-to-end.</div>
+    </div>
+
+    <div class="card" style="background:#0A1A0E;border:2px solid #16A34A;border-top:10px solid #16A34A;display:flex;flex-direction:column">
+      <div style="font-size:20px;font-weight:800;color:#16A34A;letter-spacing:1px;margin-bottom:10px">OBJ 3 · Innovation and High-Value Work</div>
+      <div style="width:100%;height:1px;background:#0A3010;margin-bottom:28px"></div>
+      <div style="font-size:30px;font-weight:700;color:#FFFFFF;line-height:1.45;flex:1">Focus engineering capacity on innovation and high-value work by reducing time spent on routine tasks.</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════ SLIDE 12 — Dashboard ══════════════════════ -->
+<div class="slide bg-navy col pad" id="s12">
+  <div class="label" style="margin-bottom:16px">Dashboard</div>
+  <div class="t44" style="margin-bottom:36px">How we will know we are winning</div>
+
+  <div style="background:#1E293B;border-radius:20px;padding:52px 64px;flex:1;display:flex;flex-direction:column">
+    <div style="display:flex;align-items:center;font-size:18px;font-weight:700;color:#64748B;letter-spacing:1.5px;padding-bottom:20px;border-bottom:1.5px solid #334155;margin-bottom:8px">
+      <div style="flex:4">METRIC</div>
+      <div style="flex:1;text-align:center">PILLAR</div>
+      <div style="flex:4;padding-left:28px">PROGRESS</div>
+      <div style="width:80px;text-align:right">%</div>
+    </div>
+    <div style="flex:1;display:flex;flex-direction:column;justify-content:space-evenly">
+
+      <div style="display:flex;align-items:center">
+        <div style="flex:4;font-size:26px;color:#FFFFFF">Career framework coverage</div>
+        <div style="flex:1;text-align:center"><span style="background:#334155;border-radius:8px;padding:6px 18px;font-size:18px;color:#94A3B8">Pillar 1</span></div>
+        <div style="flex:4;padding-left:28px"><div class="bar-track"><div class="bar-fill" style="width:85%;background:#2563EB"></div></div></div>
+        <div style="width:80px;text-align:right;font-size:30px;font-weight:800;color:#2563EB">85%</div>
+      </div>
+
+      <div style="display:flex;align-items:center">
+        <div style="flex:4;font-size:26px;color:#FFFFFF">Colleagues with development plans</div>
+        <div style="flex:1;text-align:center"><span style="background:#334155;border-radius:8px;padding:6px 18px;font-size:18px;color:#94A3B8">Pillar 1</span></div>
+        <div style="flex:4;padding-left:28px"><div class="bar-track"><div class="bar-fill" style="width:75%;background:#2563EB"></div></div></div>
+        <div style="width:80px;text-align:right;font-size:30px;font-weight:800;color:#2563EB">75%</div>
+      </div>
+
+      <div style="display:flex;align-items:center">
+        <div style="flex:4;font-size:26px;color:#FFFFFF">Understanding of progression opportunities</div>
+        <div style="flex:1;text-align:center"><span style="background:#334155;border-radius:8px;padding:6px 18px;font-size:18px;color:#94A3B8">Pillar 1</span></div>
+        <div style="flex:4;padding-left:28px"><div class="bar-track"><div class="bar-fill" style="width:90%;background:#16A34A"></div></div></div>
+        <div style="width:80px;text-align:right;font-size:30px;font-weight:800;color:#16A34A">90%</div>
+      </div>
+
+      <div style="display:flex;align-items:center">
+        <div style="flex:4;font-size:26px;color:#FFFFFF">Meaningful ownership score</div>
+        <div style="flex:1;text-align:center"><span style="background:#334155;border-radius:8px;padding:6px 18px;font-size:18px;color:#94A3B8">Pillar 2</span></div>
+        <div style="flex:4;padding-left:28px"><div class="bar-track"><div class="bar-fill" style="width:72%;background:#F59E0B"></div></div></div>
+        <div style="width:80px;text-align:right;font-size:30px;font-weight:800;color:#F59E0B">72%</div>
+      </div>
+
+      <div style="display:flex;align-items:center">
+        <div style="flex:4;font-size:26px;color:#FFFFFF">Time on high-value work</div>
+        <div style="flex:1;text-align:center"><span style="background:#334155;border-radius:8px;padding:6px 18px;font-size:18px;color:#94A3B8">Pillar 3</span></div>
+        <div style="flex:4;padding-left:28px"><div class="bar-track"><div class="bar-fill" style="width:68%;background:#16A34A"></div></div></div>
+        <div style="width:80px;text-align:right;font-size:30px;font-weight:800;color:#16A34A">68%</div>
+      </div>
+
+    </div>
+    <div style="margin-top:24px;font-size:18px;color:#64748B;font-style:italic;text-align:center">
+      Illustrative targets — Key Results will be confirmed during the workshop session.
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════ SLIDE 13 — Quarterly Rhythm ══════════════════════ -->
+<div class="slide bg-navy col pad" id="s13">
+  <div class="glow" style="width:700px;height:700px;top:150px;left:50%;transform:translateX(-50%);background:rgba(37,99,235,0.1)"></div>
+  <div class="label" style="margin-bottom:16px">Quarterly rhythm</div>
+  <div class="t44" style="margin-bottom:0">OKRs are not written once and forgotten.</div>
+
+  <div style="flex:1;display:flex;align-items:center;justify-content:center">
+    <div style="position:relative;width:1100px;height:700px">
+      <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+                  width:200px;height:200px;background:#1E293B;border:3px solid #2563EB;
+                  border-radius:50%;display:flex;align-items:center;justify-content:center;
+                  font-size:28px;font-weight:700;color:#FFFFFF;text-align:center;line-height:1.3;z-index:2">
+        Quarterly<br>Cycle
+      </div>
+
+      <div style="position:absolute;top:10px;left:50%;transform:translateX(-50%);
+                  background:#1E293B;border:2px solid #2563EB;border-radius:50px;
+                  padding:16px 36px;text-align:center">
+        <div style="font-size:26px;font-weight:700;color:#2563EB">Plan</div>
+        <div style="font-size:16px;color:#64748B;margin-top:4px">Set objectives &amp; key results</div>
+      </div>
+
+      <div style="position:absolute;top:90px;right:60px;
+                  background:#1E293B;border:2px solid #2563EB;border-radius:50px;
+                  padding:16px 36px;text-align:center">
+        <div style="font-size:26px;font-weight:700;color:#2563EB">Align</div>
+        <div style="font-size:16px;color:#64748B;margin-top:4px">Share with team</div>
+      </div>
+
+      <div style="position:absolute;bottom:90px;right:60px;
+                  background:#1E293B;border:2px solid #16A34A;border-radius:50px;
+                  padding:16px 36px;text-align:center">
+        <div style="font-size:26px;font-weight:700;color:#16A34A">Execute</div>
+        <div style="font-size:16px;color:#64748B;margin-top:4px">Run initiatives</div>
+      </div>
+
+      <div style="position:absolute;bottom:10px;left:50%;transform:translateX(-50%);
+                  background:#1E293B;border:2px solid #16A34A;border-radius:50px;
+                  padding:16px 36px;text-align:center">
+        <div style="font-size:26px;font-weight:700;color:#16A34A">Check in</div>
+        <div style="font-size:16px;color:#64748B;margin-top:4px">Mid-quarter review</div>
+      </div>
+
+      <div style="position:absolute;bottom:90px;left:60px;
+                  background:#1E293B;border:2px solid #F59E0B;border-radius:50px;
+                  padding:16px 36px;text-align:center">
+        <div style="font-size:26px;font-weight:700;color:#F59E0B">Review</div>
+        <div style="font-size:16px;color:#64748B;margin-top:4px">End-of-quarter retro</div>
+      </div>
+
+      <div style="position:absolute;top:90px;left:60px;
+                  background:#1E293B;border:2px solid #F59E0B;border-radius:50px;
+                  padding:16px 36px;text-align:center">
+        <div style="font-size:26px;font-weight:700;color:#F59E0B">Learn</div>
+        <div style="font-size:16px;color:#64748B;margin-top:4px">Capture insights</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════ SLIDE 14 — Workshop ══════════════════════ -->
+<div class="slide bg-navy col pad" id="s14">
+  <div class="label" style="margin-bottom:16px">Workshop</div>
+  <div class="t44" style="margin-bottom:40px">Now we build them together.</div>
+
+  <div class="row grow gap48">
+
+    <div style="flex:1;display:flex;flex-direction:column;gap:28px;justify-content:center">
+
+      <div style="display:flex;align-items:flex-start;gap:28px">
+        <div style="width:64px;height:64px;background:#2563EB;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:800;color:#fff;flex-shrink:0">1</div>
+        <div>
+          <div style="font-size:28px;font-weight:700;color:#FFFFFF;margin-bottom:8px">Choose an Objective</div>
+          <div style="font-size:21px;color:#94A3B8;line-height:1.5">Pick one of our three objectives. Write it in inspiring, qualitative language.</div>
+        </div>
+      </div>
+
+      <div style="display:flex;align-items:flex-start;gap:28px">
+        <div style="width:64px;height:64px;background:#2563EB;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:800;color:#fff;flex-shrink:0">2</div>
+        <div>
+          <div style="font-size:28px;font-weight:700;color:#FFFFFF;margin-bottom:8px">Draft three Key Results</div>
+          <div style="font-size:21px;color:#94A3B8;line-height:1.5">Write three measurable Key Results. Each must include a number.</div>
+        </div>
+      </div>
+
+      <div style="display:flex;align-items:flex-start;gap:28px">
+        <div style="width:64px;height:64px;background:#2563EB;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:800;color:#fff;flex-shrink:0">3</div>
+        <div>
+          <div style="font-size:28px;font-weight:700;color:#FFFFFF;margin-bottom:8px">Identify initiatives</div>
+          <div style="font-size:21px;color:#94A3B8;line-height:1.5">List two or three specific initiatives that will move each Key Result.</div>
+        </div>
+      </div>
+
+      <div style="display:flex;align-items:flex-start;gap:28px">
+        <div style="width:64px;height:64px;background:#2563EB;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:800;color:#fff;flex-shrink:0">4</div>
+        <div>
+          <div style="font-size:28px;font-weight:700;color:#FFFFFF;margin-bottom:8px">Challenge and refine</div>
+          <div style="font-size:21px;color:#94A3B8;line-height:1.5">Share with the group. Pressure-test. Improve together.</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div style="flex:1;background:#0D1B2E;border:2px solid #2563EB;border-radius:20px;padding:52px 48px;display:flex;flex-direction:column">
+      <div style="font-size:26px;font-weight:800;color:#2563EB;margin-bottom:36px">Quality questions</div>
+      <div style="display:flex;flex-direction:column;gap:26px;flex:1;justify-content:center">
+        <div style="display:flex;align-items:center;gap:22px">
+          <div style="width:16px;height:16px;background:#2563EB;border-radius:50%;flex-shrink:0"></div>
+          <div style="font-size:24px;color:#FFFFFF">Would success be obvious to a stranger?</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:22px">
+          <div style="width:16px;height:16px;background:#2563EB;border-radius:50%;flex-shrink:0"></div>
+          <div style="font-size:24px;color:#FFFFFF">Can every Key Result be measured with data?</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:22px">
+          <div style="width:16px;height:16px;background:#2563EB;border-radius:50%;flex-shrink:0"></div>
+          <div style="font-size:24px;color:#FFFFFF">Does it connect to our mission?</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:22px">
+          <div style="width:16px;height:16px;background:#2563EB;border-radius:50%;flex-shrink:0"></div>
+          <div style="font-size:24px;color:#FFFFFF">Are we measuring outcomes, not effort?</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:22px">
+          <div style="width:16px;height:16px;background:#2563EB;border-radius:50%;flex-shrink:0"></div>
+          <div style="font-size:24px;color:#FFFFFF">Is this achievable in one quarter?</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:22px">
+          <div style="width:16px;height:16px;background:#2563EB;border-radius:50%;flex-shrink:0"></div>
+          <div style="font-size:24px;color:#FFFFFF">Would we be proud of hitting this?</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════ SLIDE 15 — Closing ══════════════════════ -->
+<div class="slide bg-navy grid-bg col" style="padding:140px 140px 60px" id="s15">
+  <div class="glow" style="width:1000px;height:1000px;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(37,99,235,0.12)"></div>
+  <div style="font-size:90px;font-weight:800;color:#FFFFFF;margin-bottom:12px">Objectives inspire.</div>
+  <div style="font-size:90px;font-weight:800;color:#2563EB;margin-bottom:12px">Key Results measure.</div>
+  <div style="font-size:90px;font-weight:800;color:#64748B;margin-bottom:64px">Initiatives deliver.</div>
+  <div style="width:130px;height:5px;background:#2563EB;border-radius:3px;margin-bottom:48px"></div>
+  <div style="font-size:40px;color:#94A3B8;font-style:italic;line-height:1.5">"Measure what matters, and the right work follows."</div>
+  <div style="flex:1"></div>
+  <div style="text-align:right;font-size:20px;color:#334155">Ntegra · Product Engineering</div>
+</div>
+
+</body>
+</html>
